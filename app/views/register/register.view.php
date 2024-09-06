@@ -16,23 +16,27 @@
                                 </div>
                                 <br><br>
 
-                                <form action="../controllers/main.validar.php" method="POST" class="user">
+                                <form class="user" name="form_sign">
 
                                     <div class="form-group">
                                         <label for="usur">Usuario</label>
                                         <input type="text" class="form-control form-control-user" id="usur" name="usur" aria-describedby="emailHelp" placeholder="Usuario" required>
                                     </div><br>
                                     <div class="form-group">
+                                        <label for="email">Email</label>
+                                        <input type="email" class="form-control form-control-user" id="email" name="email" placeholder="Email" required>
+                                    </div><br>
+                                    <div class="form-group">
                                         <label for="pass">Contraseña</label>
                                         <input type="password" class="form-control form-control-user" id="pass" name="pass" placeholder="Contraseña" required>
-                                    </div>
+                                    </div><br>
 
                                     <div class="form-group">
                                         <label class="sign-in">¿Ya tienes una cuenta?
                                         <a href="../public/index.php"> Inicia sesión aqui</a>    </label>
                                     </div>
 
-                                    <button class="btn-primary btn-user btn-block boton-login" type="submit">
+                                    <button type="button" class="btn-info btn-user btn-block boton-login" onclick="registerUser()">
                                         Registrarse
                                     </button>
                                     <hr>

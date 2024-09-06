@@ -22,72 +22,17 @@
 
 </head>
 
-<body id="login">
+<body id="main">
 
-    <div id="contenedorLogin">
-
-
-        <div class="container " style="margin-bottom: 38px;margin-top: 38px;">
-
-            <div class="row justify-content-center ">
-                <div class="col-xl-5 col-lg-5 col-md-5 ">
-
-                    <div class="card o-hidden border-0 shadow-lg my-5 formlogin"><!-- controla la posicion superior -->
-                        <div class="card-body p-6 ">
-                            <!-- Nested Row within Card Body -->
-                            <div class="row ">
-
-
-
-                                <div class="col-lg-12">
-
-                                    <div class="p-6 center-login">
-                                        <div class="text-center">
-
-                                            <img src="../assets/img/logo.svg" alt="logo.svg">
-
-                                        </div>
-                                        <br><br>
-
-                                        <form action="../controllers/main.validar.php" method="POST" class="user">
-
-                                            <div class="form-group">
-                                                <input type="text" class="form-control form-control-user" id="usur" name="usur" aria-describedby="emailHelp" placeholder="Usuario" required>
-                                            </div><br>
-                                            <div class="form-group">
-                                                <input type="password" class="form-control form-control-user" id="pass" name="pass" placeholder="Contraseña" required>
-                                            </div>
-
-                                            <div class="form-group">
-                                                <div class="custom-control custom-checkbox small">                                                    
-                                                    <label class="custom-control-label" for="customCheck">¿No tienes una cuenta? registrate aqui</label>
-                                                </div>
-                                            </div>
-
-                                            <button class="btn-primary btn-user btn-block boton-login" type="submit">
-                                                Iniciar Sesion
-                                            </button>
-                                            <hr>
-
-                                        </form>
-
-                                        <hr>
-                                        <div class="text-center">
-                                        </div>
-
-                                    </div>
-                                </div>
-
-
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-
-
+    <div id="login_container">
+        <?php 
+        $operation = ISSET($_REQUEST['l']) ? $_REQUEST['l'] : 0;
+        if($operation == 0){
+            include('../app/views/login/login.view.php');
+        } else {
+            include('../app/views/register/register.view.php');
+        }
+        ?>
     </div>
 
     <!-- Bootstrap core JavaScript-->
@@ -101,29 +46,6 @@
 
     <script src="../assets/js/scripts-global.js"></script>
     <script src="../assets/js/jquery-confirm.js"></script>
-
-    <!-- Validacion datos errados o limite de sesiones -->
-    <?php if (isset($_REQUEST['d'])) {
-        if ($_REQUEST['d'] == 0) {
-            echo "<script>$.alert('Usuario y/o Contraseñas incorrectos');</script>";
-        } elseif ($_REQUEST['d'] == 6) {
-            echo "<script>
-								$.confirm({
-										   	title: 'CERRANDO SESION',
-										    content: 'Limite de sesiones por ficha alcanzada.',
-										    autoClose: 'logoutUser|10000',
-										    buttons: {
-												        logoutUser: {
-														            text: 'Cerrando',
-														            action: function () {
-														               						window.location.href = ('./views/logout.php');
-														            					}
-												        			}
-										    		 }
-										});
-						      </script>";
-        }
-    } ?>
 
     <!-- Page level plugins -->
     <script src="../assets/vendor/chart.js/Chart.min.js"></script>

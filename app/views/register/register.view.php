@@ -28,12 +28,12 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label class="sign-in">¿No tienes una cuenta?
-                                        <a href="../public/index.php?l=1"> Registrate aqui</a>    </label>
+                                        <label class="sign-in">¿Ya tienes una cuenta?
+                                        <a href="../public/index.php"> Inicia sesión aqui</a>    </label>
                                     </div>
 
                                     <button class="btn-primary btn-user btn-block boton-login" type="submit">
-                                        Iniciar Sesion
+                                        Registrarse
                                     </button>
                                     <hr>
 

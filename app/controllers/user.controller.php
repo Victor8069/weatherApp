@@ -15,11 +15,10 @@ class UserController
     {
         require_once('../views/frames/header.php');
         require_once('../views/frames/navbar.php');
+        require_once('../views/user/user.view.php');
         require_once('../views/frames/firtsfooter.php');
         require_once('../views/frames/footer.php');
     }
-
-
 
     public function Insert()
     {
@@ -35,11 +34,7 @@ class UserController
 
     public function Eliminar()
     {
-
-        $rolpuntero         = $_REQUEST['rol'];
-
         $this->user->Delete($_REQUEST['id']);
-
         require_once('../views/user/usuarioSelect.php');
     }
 

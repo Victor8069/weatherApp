@@ -13,7 +13,7 @@
       <footer class="sticky-footer ">
             <div class="container my-auto">
               <div class="copyright text-center my-auto">
-                <span>Copyright © MaxLearning Intranet 2020</span>
+                <span>Copyright © Weather App 2024</span>
               </div>
             </div>
       </footer>

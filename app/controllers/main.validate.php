@@ -19,7 +19,8 @@
 					}
 					elseif(isset($response->User) and $response->Login=="SI")
 					{															
-							$_SESSION['SUsu'] = $response->User;							
+							$_SESSION['SUsu'] = $response->User;
+							$_SESSION['SUid'] = $response->Uid;							
 							echo "SUCCESS";
 
 					}

@@ -57,27 +57,3 @@
         </div>
     </div>
 </div>
-
-
-<!-- Validacion datos errados o limite de sesiones -->
-<?php if (isset($_REQUEST['d'])) {
-    if ($_REQUEST['d'] == 0) {
-        echo "<script>$.alert('Usuario y/o Contraseñas incorrectos');</script>";
-    } elseif ($_REQUEST['d'] == 6) {
-        echo "<script>
-								$.confirm({
-										   	title: 'CERRANDO SESION',
-										    content: 'Limite de sesiones alcanzada.',
-										    autoClose: 'logoutUser|10000',
-										    buttons: {
-												        logoutUser: {
-														            text: 'Cerrando',
-														            action: function () {
-														               						window.location.href = ('./views/logout.php');
-														            					}
-												        			}
-										    		 }
-										});
-						      </script>";
-    }
-} ?>

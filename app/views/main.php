@@ -6,7 +6,7 @@ session_start();
 // Acc = Accion       --> Metodo a Realizar o Ejecutar
 require_once('../../config/database.php');
 
-$controller = 'user';
+$controller = 'weather';
 $register = isset($_REQUEST['register']);
 
 if (isset($_SESSION['SUsu']) || $register) {

@@ -16,7 +16,7 @@
                                 </div>
                                 <br><br>
 
-                                <form action="../controllers/main.validar.php" method="POST" class="user">
+                                <form class="user" name="form_login" class="needs-validation">
 
                                     <div class="form-group">
                                         <label for="usur">Usuario</label>
@@ -32,7 +32,7 @@
                                         <a href="../public/index.php?l=1"> Registrate aqui</a>    </label>
                                     </div>
 
-                                    <button class="btn-primary btn-user btn-block boton-login" type="submit">
+                                    <button type="button" class="btn-primary btn-user btn-block boton-login" onclick="loginUser()">
                                         Iniciar Sesion
                                     </button>
                                     <hr>

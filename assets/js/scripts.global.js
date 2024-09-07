@@ -1,3 +1,9 @@
+let routes = {
+    MAIN: "../app/views/main.php",
+    VALIDATE: "../app/controllers/main.validate.php",
+    CLOSE: "../app/controllers/main.close.php"
+}
+
 function ObjAjax() {
     var xmlhttp = false;
     try { xmlhttp = new ActiveXObject("Msxml2.XMLHTTP"); } catch (e) {
@@ -13,7 +19,7 @@ function registerUser() {
     var email = document.form_sign.email.value;
 
     const ajax = new ObjAjax();
-    ajax.open("POST", "../app/views/main.php", true);
+    ajax.open("POST", routes.MAIN, true);
     ajax.onreadystatechange = function() {
         if (ajax.readyState == 4) {
             if (ajax.status == 200) {
@@ -34,8 +40,7 @@ function registerUser() {
                               }
                     });    
                 }
-                            
-                
+                                            
             } else {
                 $.alert("Proceso sin exito");
             }
@@ -44,5 +49,49 @@ function registerUser() {
 
     ajax.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     ajax.send("ctrl=user&acti=insert&usur=" + usur + "&pass=" + pass + "&email=" + email + "&register=true");
+
+}
+
+function loginUser() {
+    var usur = document.form_login.usur.value;
+    var pass = document.form_login.pass.value;
+
+    if(usur == '' || pass == ''){
+        $.alert("Formulario vacio");
+    } else {
+        const ajax = new ObjAjax();
+        ajax.open("POST", routes.VALIDATE, true);
+        ajax.onreadystatechange = function() {
+            if (ajax.readyState == 4) {
+                if (ajax.status == 200) {
+                    var responseText = ajax.responseText.trim();
+                    console.log(ajax);
+                    if('SUCCESS' === responseText){
+                        window.location.href = routes.MAIN;
+                    } else {
+                        $.confirm({
+                            title: 'No se pudo iniciar sesion',
+                            content: responseText,
+                            buttons: {
+                                     Ok: {
+                                                 text: 'Cerrar',
+                                                 action: function () {
+                                                    window.location.href = routes.CLOSE;
+                                                                     }
+                                                 }
+                                  }
+                        });    
+                    }
+                                                
+                } else {
+                    $.alert("Proceso sin exito");
+                }
+            }
+        };
+    
+        ajax.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        ajax.send("usur=" + usur + "&pass=" + pass );
+    }
+    
 
 }

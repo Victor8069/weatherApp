@@ -1,9 +1,11 @@
 <?php
 
-class Usuario
+class UserModel
 {
     private $pdo;
-
+    public $user;
+    public $pass;
+    public $email;
 
     public function __construct()
     {
@@ -34,7 +36,7 @@ class Usuario
         }
     }    
 
-    public function Insert(Usuario $data)
+    public function Insert(UserModel $data)
     {
         try {
             $sql = "INSERT INTO user_weather(username,password,email)
@@ -44,7 +46,7 @@ class Usuario
                 ->execute(
                     array(
                         $data->user,
-                        password_hash($data->pass, PASSWORD_DEFAULT),
+                        md5($data->pass),
                         $data->email
                     )
                 );
@@ -58,29 +60,6 @@ class Usuario
         }
     }
 
-    public function Update(Usuario $data, $update)
-    {
-        try {
-            $sql = "UPDATE tbl_usuario SET usu_numdnt = ?, usu_nombre = ?, usu_aplldo = ?, usu_passwd = ?, usu_correo = ?, usu_rolid = ?, usu_estid = ?, usu_tipid = ? WHERE usu_numdnt = $update";
-            $this->pdo->prepare($sql)
-                ->execute(
-                    array(
-                        $data->id,
-                        $data->nombre,
-                        $data->apellido,
-                        md5($data->contraseña),
-                        $data->correo,
-                        $data->rol,
-                        $data->estado,
-                        $data->identi
-
-
-                    )
-                );
-        } catch (Exception $e) {
-            die($e->getMessage());
-        }
-    }
 
     public function Delete($id)
     {
@@ -130,26 +109,5 @@ class Usuario
         }
     }
 
-
-    public function UpdateUser(Usuario $data)
-    {
-        try {
-            $sql = "UPDATE tbl_usuario SET usu_numdnt = ?, usu_nombre = ?, usu_aplldo = ?, usu_correo = ? WHERE usu_numdnt = ?";
-            $this->pdo->prepare($sql)
-                ->execute(
-                    array(
-                        $data->id,
-                        $data->nombre,
-                        $data->apellido,
-                        $data->correo,
-
-                        $data->id
-
-                    )
-                );
-        } catch (Exception $e) {
-            die($e->getMessage());
-        }
-    }
 
 }
